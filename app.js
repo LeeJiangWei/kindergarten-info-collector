@@ -20,8 +20,11 @@ app.get("/", function (req, res) {
 
 
 app.post('/', function (req, res) {
+    let data = "";
+    data += req.body.name + ',';
+    data += req.body.sex +'\n';
     fs.appendFile('data.csv', data, 'utf8', function (error) {
-        res.sendStatus('200');
+        res.redirect('main.html');
     });
 });
 

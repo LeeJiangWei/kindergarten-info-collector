@@ -5,39 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="stylesheets/w3.css">
     <title>报名表</title>
+    <script src="javascripts/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="javascripts/script.js" type="text/javascript"></script>
+
 </head>
 <body>
-<div class="w3-content" style="max-width:600px;">
-    <div class="w3-card-4 w3-margin">
-        <div class="w3-container w3-deep-purple">
-            <h3>Input your info:</h3>
-        </div>
-        <form class="w3-container" action="https://httpbin.org/post" method="post">
-            <label>Text
-                <input class="w3-input w3-animate-input w3-hover-shadow" type="text" name="text">
-            </label>
-            <label>Date
-                <input class="w3-input w3-animate-input w3-hover-shadow" type="date">
-            </label>
-            <label>Time
-                <input class="w3-input w3-animate-input w3-hover-shadow" type="time">
-            </label>
-            <label>Sex
-                <select class="w3-input w3-animate-input w3-hover-shadow" name="sex">
-                    <option value="female">female</option>
-                    <option value="male">male</option>
-                </select>
-            </label>
-            <label>Remark
-                <textarea class="w3-input w3-animate-input w3-hover-shadow" name="remark">
-            </textarea>
-            </label>
-            <div class="w3-section w3-center">
-                <input type="reset" value="Clear" class="w3-button w3-red">
-                <input type="submit" value="Login" class="w3-button w3-green">
+
+<div class="w3-content" style="max-width:1400px;">
+    <form class="w3-container" action="/" method="post"><!--https://httpbin.org/post-->
+        <div class="w3-row">
+            <div class="w3-col l10 s12">
+                <div class="w3-card-4 w3-margin">
+                    <div class="w3-container w3-green">
+                        <h3>报名信息</h3>
+                    </div>
+                    <div class="w3-container">
+                        <div>
+                            <div>
+                                <p>报读学校</p>
+                            </div>
+                            <div>
+                                <input class="w3-input w3-animate-input w3-hover-shadow" type="text" name="school" disabled value="增城区凤雅幼儿园">
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>姓名</p>
+                            </div>
+                            <div>
+                                <input class="w3-input w3-animate-input w3-hover-shadow" type="text" name="name" required>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>性别</p>
+                            </div>
+                            <div>
+                                <select class="w3-input w3-animate-input w3-hover-shadow" name="sex">
+                                    <option value="female">female</option>
+                                    <option value="male">male</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>出生日期</p>
+                            </div>
+                            <div>
+                                <input class="w3-input w3-animate-input w3-hover-shadow" type="date" name="birthday">
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>Time</p>
+                            </div>
+                            <div>
+                                <input class="w3-input w3-animate-input w3-hover-shadow" type="time">
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>报名日期</p>
+                            </div>
+                            <div>
+                                <input id="sd" class="w3-input w3-animate-input w3-hover-shadow" type="date" name="sign_in_day" disabled>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 20px">
+                            <div>
+                                <p>Remark</p>
+                            </div>
+                            <div>
+                            <textarea class="w3-input w3-animate-input w3-hover-shadow" name="remark">
+                            </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </form>
-    </div>
+            <div class="w3-col l2">
+                <div class="w3-card-4 w3-margin">
+                    <div class="w3-container w3-deep-orange">
+                        <h3>提交信息</h3>
+                    </div>
+                    <div class="w3-container w3-center">
+                        <div class="w3-section">
+                            <input type="reset" value="重置" class="w3-button w3-red">
+                            <input type="submit" value="提交" class="w3-button w3-green">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>
