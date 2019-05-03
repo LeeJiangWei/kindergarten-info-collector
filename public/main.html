@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/w3.css">
+    <title>报名表</title>
+</head>
+<body>
+<div class="w3-content" style="max-width:600px;">
+    <div class="w3-card-4 w3-margin">
+        <div class="w3-container w3-deep-purple">
+            <h3>Input your info:</h3>
+        </div>
+        <form class="w3-container" action="https://httpbin.org/post" method="post">
+            <label>Text
+                <input class="w3-input w3-animate-input w3-hover-shadow" type="text" name="text">
+            </label>
+            <label>Date
+                <input class="w3-input w3-animate-input w3-hover-shadow" type="date">
+            </label>
+            <label>Time
+                <input class="w3-input w3-animate-input w3-hover-shadow" type="time">
+            </label>
+            <label>Sex
+                <select class="w3-input w3-animate-input w3-hover-shadow" name="sex">
+                    <option value="female">female</option>
+                    <option value="male">male</option>
+                </select>
+            </label>
+            <label>Remark
+                <textarea class="w3-input w3-animate-input w3-hover-shadow" name="remark">
+            </textarea>
+            </label>
+            <div class="w3-section w3-center">
+                <input type="reset" value="Clear" class="w3-button w3-red">
+                <input type="submit" value="Login" class="w3-button w3-green">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
