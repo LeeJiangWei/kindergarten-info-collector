@@ -25,8 +25,16 @@ app.post('/', function (req, res) {
         if (!exists) {
             data += "\uFEFF";
         }
+        data += req.body.grade + ',';
+        data += req.body.year + ',';
+        data += req.body.season + ',';
         data += req.body.name + ',';
-        data += req.body.sex + '\n';
+        data += req.body.sex + ',';
+        data += req.body.identity + ',';
+        data += req.body.id_number + ',';
+        data += req.body.birthday + ',';
+        data += new Date().toISOString().slice(0,10) + ',';
+        data += req.body.remark + '\n';
         fs.appendFile('data.csv', data, 'utf8', function (error) {
             res.redirect('main.html');
         });

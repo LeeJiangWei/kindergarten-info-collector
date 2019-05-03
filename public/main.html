@@ -30,6 +30,40 @@
                         </div>
                         <div>
                             <div>
+                                <p>报读年级</p>
+                            </div>
+                            <div>
+                                <select class="w3-input w3-animate-input w3-hover-shadow" name="grade" required>
+                                    <option value="小班">小班</option>
+                                    <option value="中班">中班</option>
+                                    <option value="大班">大班</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>报读学年</p>
+                            </div>
+                            <div>
+                                <select class="w3-input w3-animate-input w3-hover-shadow" name="year" required>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>报读学期</p>
+                            </div>
+                            <div>
+                                <select class="w3-input w3-animate-input w3-hover-shadow" name="season" required>
+                                    <option value="秋季">秋季</option>
+                                    <option value="春季">春季</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
                                 <p>姓名</p>
                             </div>
                             <div>
@@ -42,9 +76,29 @@
                             </div>
                             <div>
                                 <select class="w3-input w3-animate-input w3-hover-shadow" name="sex">
-                                    <option value="female">female</option>
-                                    <option value="male">male</option>
+                                    <option value="男">男</option>
+                                    <option value="女">女</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>证件类型</p>
+                            </div>
+                            <div>
+                                <input class="w3-input w3-animate-input w3-hover-shadow" list="id" required name="identity">
+                                <datalist id="id">
+                                    <option value="居民身份证"></option>
+                                    <option value="户口簿"></option>
+                                </datalist>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>证件号码</p>
+                            </div>
+                            <div>
+                                <input class="w3-input w3-animate-input w3-hover-shadow" type="text" name="id_number" required>
                             </div>
                         </div>
                         <div>
@@ -52,7 +106,7 @@
                                 <p>出生日期</p>
                             </div>
                             <div>
-                                <input class="w3-input w3-animate-input w3-hover-shadow" type="date" name="birthday">
+                                <input class="w3-input w3-animate-input w3-hover-shadow" type="date" name="birthday" required>
                             </div>
                         </div>
                         <div>
@@ -73,11 +127,11 @@
                         </div>
                         <div style="margin-bottom: 20px">
                             <div>
-                                <p>Remark</p>
+                                <p>备注信息</p>
                             </div>
                             <div>
-                            <textarea class="w3-input w3-animate-input w3-hover-shadow" name="remark">
-                            </textarea>
+                                <textarea class="w3-input w3-animate-input w3-hover-shadow" name="remark">
+                                </textarea>
                             </div>
                         </div>
                     </div>
@@ -90,7 +144,7 @@
                     </div>
                     <div class="w3-container w3-center">
                         <div class="w3-section">
-                            <input type="reset" value="重置" class="w3-button w3-red">
+                            <input type="reset" value="重置" class="w3-button w3-red" onclick="setTimeout(changeDate, 300)">
                             <input type="submit" value="提交" class="w3-button w3-green">
                         </div>
                     </div>
