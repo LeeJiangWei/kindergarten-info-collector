@@ -20,11 +20,16 @@ app.get("/", function (req, res) {
 
 
 app.post('/', function (req, res) {
-    let data = "\uFEFF"; //initialize csv with dom head: \uFEFF
-    data += req.body.name + ',';
-    data += req.body.sex +'\n';
-    fs.appendFile('data.csv', data, 'utf8', function (error) {
-        res.redirect('main.html');
+    fs.exists("data.csv", function (exists) {
+        let data = ""; //initialize csv with dom head: \uFEFF
+        if (!exists) {
+            data += "\uFEFF";
+        }
+        data += req.body.name + ',';
+        data += req.body.sex + '\n';
+        fs.appendFile('data.csv', data, 'utf8', function (error) {
+            res.redirect('main.html');
+        });
     });
 });
 
