@@ -2,12 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="5;url=main.html">
+<!--    <meta http-equiv="refresh" content="5;url=main.html">-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="javascripts/jquery-3.3.1.min.js" type="text/javascript"></script>
     <title>成功</title>
 </head>
 <body>
     <h1>您已报名成功</h1>
-    <p>将在5秒后跳转...</p>
+    <p>将在<span id="countdown"></span>秒后跳转...</p>
+    <script>
+        function countDown(seconds) {
+            document.getElementById("countdown").innerText=seconds;
+            if(--seconds>=0){
+                setTimeout(function () {
+                    countDown(seconds)
+                }, 1000)
+            }
+            else {
+                location.href="/main.html";
+            }
+        }
+        countDown(5);
+    </script>
 </body>
 </html>
