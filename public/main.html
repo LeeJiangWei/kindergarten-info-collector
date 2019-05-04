@@ -12,7 +12,7 @@
 <body>
 
 <div class="w3-content" style="max-width:1400px;">
-    <form class="w3-container" action="/" method="post"><!--https://httpbin.org/post-->
+    <form class="w3-container" action="/" method="post" onsubmit="return submit_confirm()"><!--https://httpbin.org/post-->
         <div class="w3-row">
             <div class="w3-col l10 s12">
                 <div class="w3-card-4 w3-margin">
@@ -106,15 +106,7 @@
                                 <p>出生日期</p>
                             </div>
                             <div>
-                                <input class="w3-input w3-animate-input w3-hover-shadow" type="date" name="birthday" required>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <p>Time</p>
-                            </div>
-                            <div>
-                                <input class="w3-input w3-animate-input w3-hover-shadow" type="time">
+                                <input class="w3-input w3-animate-input w3-hover-shadow" type="date" name="birthday" min="2015-01-01" required>
                             </div>
                         </div>
                         <div>
@@ -122,7 +114,39 @@
                                 <p>报名日期</p>
                             </div>
                             <div>
-                                <input id="sd" class="w3-input w3-animate-input w3-hover-shadow" type="date" name="sign_in_day" disabled>
+                                <input id="sd" class="w3-input w3-animate-input w3-hover-shadow" type="date" name="sign_in_day" readonly>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>报名时间</p>
+                            </div>
+                            <div>
+                                <input class="w3-input w3-animate-input w3-hover-shadow" type="time" name="time" readonly>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>联系人</p>
+                            </div>
+                            <div>
+                                <input class="w3-input w3-animate-input w3-hover-shadow" type="text" name="contact" required>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>联系人手机</p>
+                            </div>
+                            <div>
+                                <input class="w3-input w3-animate-input w3-hover-shadow" type="text" name="contact_number" required>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>现住地址</p>
+                            </div>
+                            <div>
+                                <input class="w3-input w3-animate-input w3-hover-shadow" type="text" name="address" required>
                             </div>
                         </div>
                         <div style="margin-bottom: 20px">

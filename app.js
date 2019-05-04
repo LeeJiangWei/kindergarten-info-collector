@@ -24,6 +24,7 @@ app.post('/', function (req, res) {
         let data = ""; //initialize csv with dom head: \uFEFF
         if (!exists) {
             data += "\uFEFF";
+            data += "报读年级,报读年份,报读学期,姓名,性别,证件类型,证件号,生日,报名日期,报名时间,联系人,联系人手机号,现住地址备注\n";
         }
         data += req.body.grade + ',';
         data += req.body.year + ',';
@@ -33,10 +34,14 @@ app.post('/', function (req, res) {
         data += req.body.identity + ',';
         data += req.body.id_number + ',';
         data += req.body.birthday + ',';
-        data += new Date().toISOString().slice(0,10) + ',';
+        data += req.body.sign_in_day + ',';
+        data += req.body.time + ',';
+        data += req.body.contact +',';
+        data += req.body.contact_number + ',';
+        data += req.body.address + ',';
         data += req.body.remark + '\n';
         fs.appendFile('data.csv', data, 'utf8', function (error) {
-            res.redirect('main.html');
+            res.redirect('info.html');
         });
     });
 });
