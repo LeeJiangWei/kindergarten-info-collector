@@ -18,6 +18,29 @@ app.get("/", function (req, res) {
     res.redirect('main.html');
 });
 
+const nodeMailer = require('nodemailer');
+
+let transporter = nodeMailer.createTransport({
+    service:'qq',
+    port:465,
+    secureConnection:true,
+    auth:{
+        user:'865285578@qq.com',
+        pass:'idqtljnegvgpbdjb',
+    }
+});
+
+let mailOptions = {
+    from:'"李江伟"<865285578@qq.com>',
+    to:'785201683@qq.com',
+    subject:'已收到新的报名信息',
+    html:'<h1>全部报名信息请在附件中查看</h1>' +
+        '<p>以下是新信息摘要：</p>',
+    attachments:[{
+        filename:'data.csv',
+        path:path.resolve(__dirname,'data.csv'),
+    }]
+};
 
 app.post('/', function (req, res) {
     fs.exists("data.csv", function (exists) {
@@ -42,6 +65,13 @@ app.post('/', function (req, res) {
         data += req.body.remark + '\n';
         fs.appendFile('data.csv', data, 'utf8', function (error) {
             res.redirect('info.html');
+        });
+        mailOptions.html += data;
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error){
+                return console.log(error);
+            }
+            console.log('Message has been sent: %s', info.messageId);
         });
     });
 });
