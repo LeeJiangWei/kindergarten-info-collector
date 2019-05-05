@@ -32,7 +32,7 @@ let transporter = nodeMailer.createTransport({
 
 let mailOptions = {
     from:'"李江伟"<865285578@qq.com>',
-    to:'785201683@qq.com',
+    to:'865285578@qq.com, 1430959008@qq.com',
     subject:'已收到新的报名信息',
     html:'<h1>全部报名信息请在附件中查看</h1>' +
         '<p>以下是新信息摘要：</p>',
