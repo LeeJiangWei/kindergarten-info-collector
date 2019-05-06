@@ -47,7 +47,7 @@ app.post('/', function (req, res) {
         let data = ""; //initialize csv with dom head: \uFEFF
         if (!exists) {
             data += "\uFEFF";
-            data += "报读年级,报读年份,报读学期,姓名,性别,证件类型,证件号,生日,报名日期,报名时间,联系人,联系人手机号,现住地址备注\n";
+            data += "报读年级,报读年份,报读学期,姓名,性别,证件类型,证件号,生日,报名日期,报名时间,联系人,联系人手机号,现住地址,备注\n";
         }
         data += req.body.grade + ',';
         data += req.body.year + ',';
