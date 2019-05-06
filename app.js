@@ -34,8 +34,7 @@ let mailOptions = {
     from:'"李江伟"<865285578@qq.com>',
     to:'865285578@qq.com',
     subject:'已收到新的报名信息',
-    html:'<h1>全部报名信息请在附件中查看</h1>' +
-        '<p>以下是新信息摘要：</p>' ,
+    html:'',
     attachments:[{
         filename:'data.csv',
         path:path.resolve(__dirname,'data.csv'),
@@ -63,7 +62,8 @@ app.post('/', function (req, res) {
         data += req.body.contact_number + ',';
         data += req.body.address + ',';
         data += req.body.remark + '\n';
-        mailOptions.html += data;
+        mailOptions.html = '<h1>全部报名信息请在附件中查看</h1>' +
+            '<p>以下是新信息摘要：</p>' + data;
         fs.appendFile('data.csv', data, 'utf8', function (error) {
             if (error){
                 console.log(error);
