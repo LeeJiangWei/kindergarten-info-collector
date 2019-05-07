@@ -20,19 +20,30 @@ app.get("/", function (req, res) {
 
 const nodeMailer = require('nodemailer');
 
+let account_path = path.join(__dirname,'account.json');
+let account_data = fs.readFileSync(account_path, 'utf8');
+let accounts = JSON.parse(account_data);
+let sender_account = accounts.sender[0].account;
+let sender_pass = accounts.sender[0].password;
+let receiver_account = "";
+
+for (let i = 0; i<accounts.receiver.length;i++){
+    receiver_account += accounts.receiver[i].account + ',';
+}
+
 let transporter = nodeMailer.createTransport({
     service:'qq',
     port:465,
     secureConnection:true,
     auth:{
-        user:'865285578@qq.com',
-        pass:'idqtljnegvgpbdjb',
+        user:sender_account,
+        pass:sender_pass,
     }
 });
 
 let mailOptions = {
-    from:'"李江伟"<865285578@qq.com>',
-    to:'865285578@qq.com, 1430959008@qq.com',
+    from:sender_account,
+    to:receiver_account,
     subject:'已收到新的报名信息',
     html:'',
     attachments:[{
@@ -66,10 +77,9 @@ app.post('/', function (req, res) {
             '<p>以下是新信息摘要：</p>' + data;
         fs.appendFile('data.csv', data, 'utf8', function (error) {
             if (error){
-                console.log(error);
+                return console.log(error);
             }
-            else
-                console.log("write successfully");
+            console.log("data.csv write successfully");
             res.redirect('info.html');
             transporter.sendMail(mailOptions, (error, info) => {
                 if (error){
