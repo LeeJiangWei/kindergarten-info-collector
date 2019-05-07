@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var app = express();
+var session = require('express-session');
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(logger('dev'));
@@ -26,10 +28,11 @@ let accounts = JSON.parse(account_data);
 let sender_account = accounts.sender[0].account;
 let sender_pass = accounts.sender[0].password;
 let receiver_account = "";
-
 for (let i = 0; i<accounts.receiver.length;i++){
     receiver_account += accounts.receiver[i].account + ',';
 }
+let admin_name = accounts.admin[0].username;
+let admin_pass = accounts.admin[0].password;
 
 let transporter = nodeMailer.createTransport({
     service:'qq',
@@ -88,6 +91,52 @@ app.post('/', function (req, res) {
                 console.log('Message has been sent: %s', info.messageId);
             });
         });
+    });
+});
+
+app.use(cookieParser('login'));
+app.use(session({
+    secret: 'login',
+    resave: true,
+    saveUninitialized: true
+}));
+
+app.post("/login", function (req, res){
+    const username = req.body.admin;
+    const password = req.body.ad_pass;
+    if (username === admin_name && password === admin_pass){
+        req.session.user = {
+            name:username
+        };
+        res.redirect("/backstage");
+    }else{
+        res.redirect("main.html");
+    }
+});
+
+function checkLogin(req, res, next){
+    if (req.session.user === undefined){
+        res.redirect('main.html');
+    }else{
+        next();
+    }
+}
+
+app.get("/backstage", checkLogin, function (req, res) {
+    res.render('back');
+});
+
+app.post("/download", checkLogin, function(req, res){
+    fs.readFile(path.join(__dirname, "data.csv"), function (err, data) {
+        if (err){
+            res.end("read file failed!");
+            return console.log(err);
+        }
+        res.writeHead(200,{
+            'Content-Type':'application/octet-stream',
+            'Content-Disposition':'attachment;filename=' + 'data.csv'
+        });
+        res.end(data)
     });
 });
 

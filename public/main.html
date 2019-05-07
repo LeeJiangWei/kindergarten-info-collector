@@ -12,9 +12,9 @@
 <body>
 
 <div class="w3-content" style="max-width:1400px;">
-    <form class="w3-container" action="/" method="post" onsubmit="return submit_confirm()"><!--https://httpbin.org/post-->
         <div class="w3-row">
-            <div class="w3-col l10 s12">
+            <form action="/" method="post" onsubmit="return submit_confirm()"><!--https://httpbin.org/post-->
+                <div class="w3-col l10 s12">
                 <div class="w3-card-4 w3-margin">
                     <div class="w3-container w3-green">
                         <h3>报名信息</h3>
@@ -160,7 +160,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w3-col l2">
+                <div class="w3-col l2">
                 <div class="w3-card-4 w3-margin">
                     <div class="w3-container w3-deep-orange">
                         <h3>提交信息</h3>
@@ -173,8 +173,39 @@
                     </div>
                 </div>
             </div>
+            </form>
+            <div class="w3-col l2">
+                <div class="w3-card-4 w3-margin">
+                    <div class="w3-container w3-blue">
+                        <h3>后台登录</h3>
+                    </div>
+                    <form class="w3-container" action="/login" method="post" id="login">
+                        <div class="w3-container">
+                            <div>
+                                <div>
+                                    <p>用户名</p>
+                                </div>
+                                <div>
+                                    <input class="w3-input w3-animate-input w3-hover-shadow" type="text" name="admin" form="login" required>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 20px">
+                                <div>
+                                    <p>密码</p>
+                                </div>
+                                <div >
+                                    <input class="w3-input w3-animate-input w3-hover-shadow" type="password" name="ad_pass" form="login" required>
+                                </div>
+                            </div>
+                            <div class="w3-center w3-section" style="margin-bottom: 20px">
+                                <input type="submit" value="登录" class="w3-button w3-blue" form="login">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-    </form>
 </div>
+
 </body>
 </html>
